@@ -305,6 +305,7 @@
             this.Controls.Add(this.buttonBrowseImage);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBoxFilteredPicture);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormImageEditing";

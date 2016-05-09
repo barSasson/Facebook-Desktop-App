@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -16,14 +15,21 @@ namespace B16_Ex01_Sapir_201028867_Bar_200959286
         public MainForm()
         {
             InitializeComponent();
-            FacebookService.s_CollectionLimit = 30;
-            m_Result = FacebookService.Login(
-                                        "1085758691487251",
-                                        "public_profile",
-                                        "user_photos",
-                                        "user_likes",
-                                        "publish_actions");
-            m_LoggedIn = m_Result.AccessToken != null;
+            try
+            {
+                FacebookService.s_CollectionLimit = 30;
+                m_Result = FacebookService.Login(
+                                            "1085758691487251",
+                                            "public_profile",
+                                            "user_photos",
+                                            "user_likes",
+                                            "publish_actions");
+                m_LoggedIn = m_Result.AccessToken != null;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"Oops! we couldn't connect to Facebook.. please try again later. Error Message: " + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public bool LoggedIn
